@@ -1,205 +1,169 @@
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Дастан & Бибігүл</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дастан & Бибігүл Үйлену тойы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth; background: #fffaf0; color: #5c4b37;
+        }
+        .section {
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            background-size: cover; background-position: center; background-attachment: fixed;
+            position: relative; padding: 20px;
+        }
+        .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.2); z-index: 1;
+        }
+        .content { position: relative; z-index: 2; width: 100%; max-width: 800px; }
+        
+        h1, .gold-text { font-family: 'Great Vibes', cursive; color: #d4af37; }
+        .main-date { font-size: 2rem; font-weight: bold; margin-bottom: 10px; }
+        .initials { font-size: 8rem; margin: 20px 0; }
+        
+        .invitation-card {
+            background: rgba(255, 255, 255, 0.85); padding: 40px;
+            border-radius: 20px; border: 2px solid #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .names { font-size: 3.5rem; margin-bottom: 20px; }
+        
+        /* Таймер стилі */
+        .timer { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+        .timer-item {
+            background: #d4af37; color: white; padding: 15px;
+            border-radius: 10px; min-width: 70px;
+        }
+        .timer-num { font-size: 1.5rem; display: block; font-weight: bold; }
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap" rel="stylesheet">
+        /* Анкета стилі */
+        .form-group { margin-bottom: 15px; text-align: left; }
+        input[type="text"], select {
+            width: 100%; padding: 12px; margin-top: 5px;
+            border: 1px solid #d4af37; border-radius: 8px; box-sizing: border-box;
+        }
+        .btn {
+            background: #d4af37; color: white; padding: 15px 40px;
+            border: none; border-radius: 30px; font-size: 1.2rem;
+            cursor: pointer; transition: 0.3s; margin-top: 20px;
+        }
+        .btn:hover { background: #b8962d; transform: scale(1.05); }
 
-<style>
-body{
-margin:0;
-font-family:Montserrat;
-color:white;
-text-align:center;
-}
+        /* Музыка плеері */
+        .music-player {
+            position: fixed; bottom: 20px; right: 20px; z-index: 100;
+            background: white; padding: 10px; border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-.section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:20px;
-background-size:cover;
-background-position:center;
-background-color:rgba(0,0,0,0.6);
-background-blend-mode:darken;
-animation:fade 1.2s;
-}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-.gold{
-background:linear-gradient(45deg,#FFD700,#fff,#FFD700);
--webkit-background-clip:text;
-color:transparent;
-animation:shine 3s infinite;
-}
-
-@keyframes shine{
-0%{background-position:-200px;}
-100%{background-position:200px;}
-}
-
-h1{
-font-family:Great Vibes;
-font-size:60px;
-}
-
-.music{
-position:fixed;
-top:15px;
-right:15px;
-z-index:999;
-}
-
-.timer-box{
-display:flex;
-gap:10px;
-}
-
-.time{
-background:rgba(255,215,0,0.2);
-padding:10px;
-border-radius:10px;
-}
-
-input,select,button{
-padding:10px;
-margin:5px;
-border-radius:10px;
-border:none;
-}
-
-button{
-background:gold;
-font-weight:bold;
-}
-
-.slider img{
-width:300px;
-border-radius:20px;
-margin:10px;
-}
-</style>
+        /* Күнтізбе */
+        .calendar { background: white; padding: 15px; border-radius: 10px; display: inline-block; }
+        .calendar td { padding: 8px; border: 1px solid #f0f0f0; }
+        .active-day { background: #d4af37; color: white; border-radius: 50%; font-weight: bold; }
+    </style>
 </head>
-
 <body>
 
-<audio id="music" loop>
-<source src="https://dl.prognozist.ru/music/arnau-adalym.mp3">
-</audio>
-
-<button class="music" onclick="toggleMusic()">🎵</button>
-
-<!-- 1 бет -->
-<div class="section" style="background-image:url('https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg')">
-<div>06.06.2026</div>
-<h1 class="gold">Д & Б</h1>
+<div class="music-player">
+    <audio controls autoplay loop>
+        <source src="https://example.com/arnau-adalym.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+    <p style="font-size: 10px; margin: 0; text-align: center;">Арнау - Адалым</p>
 </div>
 
-<!-- 2 бет -->
-<div class="section" style="background-image:url('https://i.ibb.co.com/B5SP49J3/5a9932e7dbfd49993de698428b7038dd.jpg')">
-<h1 class="gold">Дастан & Бибігүл</h1>
-<p>
-Құрметті ағайын-туыс, бауырлар...<br><br>
-Сіздерді <span class="gold">Дастан</span> мен <span class="gold">Бибігүл</span> тойына шақырамыз!
-</p>
+<div class="section" style="background-image: url('https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg');">
+    <div class="overlay"></div>
+    <div class="content" style="color: white;">
+        <div class="main-date">06.06.2026</div>
+        <div class="initials gold-text">Д & Б</div>
+    </div>
 </div>
 
-<!-- Фото слайдер -->
-<div class="section">
-<h1 class="gold">Естелік</h1>
-<div class="slider">
-<img src="https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg">
-<img src="https://i.ibb.co.com/bMVYgVWD/183225239126fba1011ba09f70467301.jpg">
-<img src="https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg">
-</div>
-</div>
-
-<!-- 3 бет -->
-<div class="section" style="background-image:url('https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg')">
-<p>Той иелері: Омар & Райхан</p>
-
-<h1 class="gold">Той салтанаты</h1>
-<p>06 маусым 2026</p>
-
-<!-- календарь -->
-<div style="background:rgba(255,255,255,0.1);padding:20px;border-radius:20px;">
-📅 06 МАУСЫМ
+<div class="section" style="background-image: url('https://i.ibb.co.com/B5SP49J3/5a9932e7dbfd49993de698428b7038dd.jpg');">
+    <div class="content">
+        <div class="invitation-card">
+            <h1 class="names">Дастан & Бибігүл</h1>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Құрметті ағайын-туыс, бауырлар, Құда-жегжат, нағашы-жиен, бөлелер, дос-жарандар, ұжымдастар, көршілер!<br><br>
+                Сіздерді ұлымыз <strong>Дастан</strong> мен келініміз <strong>Бибігүлдің</strong> үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
+            </p>
+            <p><strong>Той иелері: Омар - Райхан</strong></p>
+        </div>
+    </div>
 </div>
 
-<p>Сағат 19:00</p>
-
-<p>Шымкент қаласы<br>"Абубакир"</p>
-
-<a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424">
-<button>Карта</button>
-</a>
+<div class="section" style="background-image: url('https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg');">
+    <div class="content">
+        <div class="invitation-card">
+            <h2 class="gold-text" style="font-size: 2.5rem;">Той салтанаты</h2>
+            <h3>06 Маусым 2026 жыл</h3>
+            <div class="calendar">
+                <table>
+                    <tr><td>Дс</td><td>Сс</td><td>Ср</td><td>Бс</td><td>Жм</td><td>Сн</td><td>Жс</td></tr>
+                    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td class="active-day">6</td><td>7</td></tr>
+                    <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+                </table>
+            </div>
+            <p style="font-size: 1.5rem; font-weight: bold; margin: 20px 0;">Сағат 19:00-де</p>
+            <p><strong>Мекен-жайымыз:</strong><br>Шымкент қаласы, "Абубакир" тойханасы</p>
+            <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank" class="btn" style="display:inline-block; text-decoration:none;">2GIS Картамен ашу</a>
+        </div>
+    </div>
 </div>
 
-<!-- таймер -->
-<div class="section">
-<h1 class="gold">Тойға дейін</h1>
-<div class="timer-box">
-<div class="time" id="d"></div>
-<div class="time" id="h"></div>
-<div class="time" id="m"></div>
-<div class="time" id="s"></div>
-</div>
-</div>
+<div class="section" style="background-image: url('https://i.ibb.co.com/bMVYgVWD/183225239126fba1011ba09f70467301.jpg');">
+    <div class="content">
+        <div class="invitation-card">
+            <h2 class="gold-text">Той салтанатына дейін:</h2>
+            <div class="timer">
+                <div class="timer-item"><span class="timer-num" id="days">00</span>күн</div>
+                <div class="timer-item"><span class="timer-num" id="hours">00</span>сағат</div>
+                <div class="timer-item"><span class="timer-num" id="minutes">00</span>минут</div>
+                <div class="timer-item"><span class="timer-num" id="seconds">00</span>секунд</div>
+            </div>
 
-<!-- анкета -->
-<div class="section">
-<h1 class="gold">Анкета</h1>
-
-<input id="name" placeholder="Аты-жөніңіз"><br>
-<input id="wife" placeholder="Жұбайыңыз"><br>
-
-<select id="ans">
-<option>Таңдаңыз</option>
-<option>Келемін</option>
-<option>Жұбайымен</option>
-<option>Келе алмаймын</option>
-</select><br>
-
-<button onclick="send()">Жіберу</button>
-
-<p>Келіңіздер қуанышымызға ортақ болыңыздар!</p>
+            <div style="border-top: 1px solid #d4af37; padding-top: 20px;">
+                <h2 class="gold-text">Анкета</h2>
+                <div class="form-group">
+                    <label>Аты-жөніңіз:</label>
+                    <input type="text" placeholder="Аты-жөніңізді жазыңыз">
+                </div>
+                <div class="form-group">
+                    <label>Жұбайыңыздың аты-жөні:</label>
+                    <input type="text" placeholder="Жұбайыңыздың аты-жөні">
+                </div>
+                <div class="form-group">
+                    <label>Тойға келесіз бе?</label>
+                    <select>
+                        <option>Иә, келемін</option>
+                        <option>Жұбайыммен келемін</option>
+                        <option>Өкінішке орай келе алмаймын</option>
+                    </select>
+                </div>
+                <button class="btn">Жіберу / Тіркелу</button>
+            </div>
+            <p class="gold-text" style="font-size: 1.8rem; margin-top: 30px;">Келіңіздер, қуанышымызға ортақ болыңыздар!</p>
+        </div>
+    </div>
 </div>
 
 <script>
-function toggleMusic(){
-let m=document.getElementById("music");
-m.paused?m.play():m.pause();
-}
-
-// таймер
-let end=new Date("June 6, 2026 19:00").getTime();
-setInterval(()=>{
-let now=new Date().getTime();
-let t=end-now;
-
-document.getElementById("d").innerHTML=Math.floor(t/(1000*60*60*24))+" күн";
-document.getElementById("h").innerHTML=Math.floor(t%(1000*60*60*24)/(1000*60*60))+" сағ";
-document.getElementById("m").innerHTML=Math.floor(t%(1000*60*60)/(1000*60))+" мин";
-document.getElementById("s").innerHTML=Math.floor(t%(1000*60)/1000)+" сек";
-},1000);
-
-// WhatsApp жіберу
-function send(){
-let n=document.getElementById("name").value;
-let w=document.getElementById("wife").value;
-let a=document.getElementById("ans").value;
-
-let text=`Аты: ${n}%0AЖұбайы: ${w}%0AЖауап: ${a}`;
-window.open(`https://wa.me/?text=${text}`);
-}
+    // Таймер логикасы
+    const countDownDate = new Date("June 6, 2026 19:00:00").getTime();
+    setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+        document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+    }, 1000);
 </script>
 
 </body>
