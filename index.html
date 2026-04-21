@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Дастан & Бибігүл</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Montserrat&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -13,6 +13,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     color:white;
     text-align:center;
+    scroll-behavior:smooth;
 }
 
 .section {
@@ -25,57 +26,71 @@ body {
     background-size:cover;
     background-position:center;
     background-blend-mode: darken;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
+    animation: fade 1.5s ease;
 }
 
-h1, h2 {
+@keyframes fade {
+    from {opacity:0; transform:translateY(30px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+h1 {
     font-family: 'Great Vibes', cursive;
     color: gold;
+    font-size:50px;
 }
 
 .title-big {
-    font-size:60px;
+    font-size:70px;
+    font-family: 'Great Vibes';
+    color: gold;
 }
 
 .date {
-    font-size:22px;
+    font-size:24px;
     margin-bottom:10px;
 }
 
 .text {
     max-width:700px;
-    line-height:1.6;
-}
-
-input, button, select {
-    padding:10px;
-    margin:5px;
-    border:none;
-    border-radius:10px;
-    width:250px;
+    line-height:1.7;
 }
 
 button {
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
     background:gold;
     color:black;
     font-weight:bold;
     cursor:pointer;
+    margin-top:10px;
+}
+
+.music-btn {
+    position:fixed;
+    top:15px;
+    right:15px;
+    z-index:999;
 }
 
 .timer {
-    font-size:22px;
+    font-size:24px;
     margin-top:20px;
+    color:gold;
 }
-
 </style>
 </head>
 
 <body>
 
 <!-- МУЗЫКА -->
-<audio autoplay loop>
+<audio id="music" loop>
 <source src="https://dl.prognozist.ru/music/arnau-adalym.mp3" type="audio/mpeg">
 </audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Музыка</button>
 
 <!-- 1 БЕТ -->
 <div class="section" style="background-image:url('https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg')">
@@ -88,7 +103,7 @@ button {
     <h1>Дастан & Бибігүл</h1>
     <p class="text">
     Құрметті ағайын-туыс, бауырлар, Құда-Жегжат, нағашы-жиен, бөлелер, дос-жарандар, ұжымдастар, көршілер<br><br>
-    Сіздерді ұлымыз <b style="font-size:22px; color:gold;">Дастан</b> мен келініміз <b style="font-size:22px; color:gold;">Бибігүлдің</b> 
+    Сіздерді ұлымыз <span style="color:gold; font-size:22px;">Дастан</span> мен келініміз <span style="color:gold; font-size:22px;">Бибігүлдің</span> 
     үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
     </p>
 </div>
@@ -97,14 +112,13 @@ button {
 <div class="section" style="background-image:url('https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg')">
     <p>Той иелері: <b>Омар & Райхан</b></p>
 
-    <h2>Той салтанаты</h2>
+    <h1>Той салтанаты</h1>
     <p>06 маусым 2026 жыл</p>
     <p>Сағат 19:00</p>
 
-    <h2>Мекен жайымыз</h2>
+    <h1>Мекен жайымыз</h1>
     <p>Шымкент қаласы<br>"Абубакир" тойханасы</p>
 
-    <p>Мекен жайға жету үшін картаны қолданыңыз:</p>
     <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank">
         <button>Карта ашу</button>
     </a>
@@ -112,13 +126,13 @@ button {
 
 <!-- ТАЙМЕР -->
 <div class="section" style="background-image:url('https://i.ibb.co.com/CsvjY59t/813490fab7ef2a36dcf26a9a1a3d2670-1.jpg')">
-    <h2>Тойға дейін</h2>
+    <h1>Тойға дейін</h1>
     <div class="timer" id="timer"></div>
 </div>
 
 <!-- АНКЕТА -->
 <div class="section" style="background-image:url('https://i.ibb.co.com/sZZhx0M/Screenshot-2026-04-14-10-17-52-244-org-telegram-messenger.jpg')">
-    <h2>Анкета</h2>
+    <h1>Анкета</h1>
 
     <input type="text" placeholder="Аты-жөніңіз"><br>
     <input type="text" placeholder="Жұбайыңыздың аты-жөні"><br>
@@ -127,30 +141,40 @@ button {
         <option>Тойға келесіз бе?</option>
         <option>Иә, келемін</option>
         <option>Жұбайымен келемін</option>
-        <option>Өкінішке орай келе алмаймын</option>
+        <option>Келе алмаймын</option>
     </select><br>
 
     <button>Жіберу</button>
 
-    <p style="margin-top:20px;">Келіңіздер қуанышымызға ортақ болыңыздар!</p>
+    <p>Келіңіздер қуанышымызға ортақ болыңыздар!</p>
 </div>
 
 <script>
+let music = document.getElementById("music");
+
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+// Таймер
 var countDownDate = new Date("June 6, 2026 19:00:00").getTime();
 
-var x = setInterval(function() {
+setInterval(function() {
   var now = new Date().getTime();
-  var distance = countDownDate - now;
+  var d = countDownDate - now;
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  var days = Math.floor(d / (1000*60*60*24));
+  var hours = Math.floor((d % (1000*60*60*24))/(1000*60*60));
+  var minutes = Math.floor((d % (1000*60*60))/(1000*60));
+  var seconds = Math.floor((d % (1000*60))/1000);
 
   document.getElementById("timer").innerHTML =
-  days + " күн " + hours + " сағат " + minutes + " минут " + seconds + " секунд ";
-
-}, 1000);
+  days+" күн "+hours+" сағат "+minutes+" минут "+seconds+" секунд";
+},1000);
 </script>
 
 </body>
