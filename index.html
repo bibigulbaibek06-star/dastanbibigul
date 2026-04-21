@@ -6,147 +6,24 @@
     <title>Дастан & Бибігүл Үйлену тойы</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            color: #4a4a4a;
-            scroll-behavior: smooth;
-            background-color: #fdfaf6;
-        }
-
-        /* Background Sections */
-        .section {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.4);
-            z-index: 1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-        }
-
-        /* Typography */
-        h1, .names {
-            font-family: 'Great Vibes', cursive;
-            color: #d4af37; /* Gold */
-            font-size: 4rem;
-            margin: 10px 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .date-top {
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-style: italic;
-        }
-
-        .gold-text {
-            color: #d4af37;
-            font-weight: bold;
-        }
-
-        /* Countdown */
-        #countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .time-box {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid #d4af37;
-            padding: 10px;
-            min-width: 60px;
-            border-radius: 5px;
-        }
-
-        .time-box span {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        /* Form */
-        form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-top: 20px;
-        }
-
-        input, select, button {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #d4af37;
-            color: white;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background-color: #b8962d;
-        }
-
-        .calendar {
-            background: white;
-            padding: 15px;
-            border: 1px solid #d4af37;
-            display: inline-block;
-            margin: 20px 0;
-        }
-
-        .active-day {
-            background: #d4af37;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-
-        .music-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-        }
+        body, html { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; color: #4a4a4a; scroll-behavior: smooth; background-color: #fdfaf6; }
+        .section { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-size: cover; background-position: center; background-attachment: fixed; }
+        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.4); z-index: 1; }
+        .content { position: relative; z-index: 2; max-width: 600px; }
+        h1, .names { font-family: 'Great Vibes', cursive; color: #d4af37; font-size: 4rem; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .date-top { font-size: 1.5rem; letter-spacing: 5px; font-weight: 300; margin-bottom: 20px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; }
+        .gold-text { color: #d4af37; font-weight: bold; }
+        #countdown { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+        .time-box { background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37; padding: 10px; min-width: 60px; border-radius: 5px; }
+        .time-box span { display: block; font-size: 1.2rem; font-weight: bold; }
+        form { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: 20px; }
+        input, select, button { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { background-color: #d4af37; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: #b8962d; }
+        .calendar { background: white; padding: 15px; border: 1px solid #d4af37; display: inline-block; margin: 20px 0; }
+        .active-day { background: #d4af37; color: white; padding: 5px; border-radius: 50%; }
+        .music-player { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
     </style>
 </head>
 <body>
@@ -175,17 +52,14 @@
         <div class="content">
             <h2>Той салтанаты</h2>
             <p>06 маусым, 2026 жыл</p>
-            
             <div class="calendar">
                 <strong>МАУСЫМ 2026</strong><br>
                 <small>Дс Сс Ср Бс Жм Сн Жк</small><br>
                 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 &nbsp; <span class="active-day">6</span> &nbsp; 7
             </div>
-
             <p>Сағат: <span class="gold-text">19:00-де</span></p>
             <p>Мекен-жайымыз:<br> Шымкент қаласы, <strong>"Абубакир"</strong> тойханасы</p>
-            
-            <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank" style="text-decoration: none;">
+            <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank">
                 <button style="width: auto; padding: 10px 20px;">2GIS Картамен ашу</button>
             </a>
         </div>
@@ -204,18 +78,17 @@
 
             <div class="form-container">
                 <h2>Анкета</h2>
-                <form>
-                    <input type="text" placeholder="Аты-жөніңіз" required>
-                    <input type="text" placeholder="Жұбайыңыздың аты-жөні">
-                    <select>
-                        <option value="yes">Иә, келемін</option>
-                        <option value="couple">Жұбайыммен келемін</option>
-                        <option value="no">Өкінішке орай келе алмаймын</option>
+                <form onsubmit="sendToWhatsApp(event)">
+                    <input type="text" id="guestName" placeholder="Аты-жөніңіз" required>
+                    <input type="text" id="partnerName" placeholder="Жұбайыңыздың аты-жөні">
+                    <select id="attendance">
+                        <option value="Иә, келемін">Иә, келемін</option>
+                        <option value="Жұбайыммен келемін">Жұбайыммен келемін</option>
+                        <option value="Өкінішке орай келе алмаймын">Өкінішке орай келе алмаймын</option>
                     </select>
-                    <button type="submit">Тіркелу / Жіберу</button>
+                    <button type="submit">WhatsApp-пен жіберу</button>
                 </form>
             </div>
-            
             <p style="margin-top: 40px; font-style: italic;">Келіңіздер, қуанышымызға ортақ болыңыздар!</p>
         </div>
     </div>
@@ -223,25 +96,23 @@
     <div class="music-player">
         <audio id="bgMusic" loop>
            <source src="adalym.mp3" type="audio/mpeg">
- </audio>
+        </audio>
         <button onclick="toggleMusic()" id="musicBtn" style="border-radius: 50%; width: 50px; height: 50px;">🎵</button>
     </div>
 
     <script>
-        // Countdown Timer
+        // Таймер коды
         const weddingDate = new Date("June 6, 2026 19:00:00").getTime();
-
         setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
-
             document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
-        // Music Toggle
+        // Музыка коды
         const music = document.getElementById("bgMusic");
         function toggleMusic() {
             if (music.paused) {
@@ -252,6 +123,20 @@
                 document.getElementById("musicBtn").innerText = "🎵";
             }
         }
+
+        // WHATSAPP ФУНКЦИЯСЫ
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('guestName').value;
+            const partner = document.getElementById('partnerName').value;
+            const status = document.getElementById('attendance').value;
+            
+            // МЫНА ЖЕРГЕ ӨЗ НӨМІРІҢІЗДІ ЖАЗЫҢЫЗ (мысалы: 77071234567)
+            const phone = "77784187171"; 
+            
+            const text = `Сәлем! Тойға жауап:%0AАты: ${name}%0AЖұбайы: ${partner}%0AШешімі: ${status}`;
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        }
     </script>
 </body>
-    </html>
+</html>
