@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дастан & Бибігүл - Үйлену тойы</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #5c4b37;
+            scroll-behavior: smooth;
+        }
+
+        /* Ортақ фон стилі */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Алтын түсті жазу стилі */
+        .gold-text {
+            color: #D4AF37;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Бірінші бет */
+        #home {
+            background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('https://i.ibb.co.com/Psz8rnFZ/a7e7f012628fb7263c1eca4625746b5f.jpg');
+        }
+
+        .date-top {
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        .initials {
+            font-family: 'Great Vibes', cursive;
+            font-size: 6rem;
+            margin: 0;
+        }
+
+        /* Екінші бет */
+        #invitation {
+            background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('https://i.ibb.co.com/B5SP49J3/5a9932e7dbfd49993de698428b7038dd.jpg');
+        }
+
+        .names-big {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+
+        .invite-text {
+            max-width: 600px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Календарь стилі */
+        .calendar {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #D4AF37;
+            margin: 20px 0;
+        }
+
+        .highlight-circle {
+            background: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+
+        /* Таймер стилі */
+        .timer-container {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .timer-box {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 10px;
+            border: 1px solid #D4AF37;
+            min-width: 70px;
+        }
+
+        .timer-num { font-size: 1.5rem; font-weight: bold; }
+
+        /* Анкета */
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #D4AF37;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin: 15px 0;
+            color: #5c4b37;
+            text-decoration: underline;
+        }
+
+        .footer-text {
+            font-style: italic;
+            margin-top: 50px;
+        }
+
+        /* Музыка батырмасының стилі */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #D4AF37;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-control">
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+        <audio id="bgMusic" loop>
+            <source src="https://muz.sefon.pro/files/dl/1973538/Nms0UFNXQ295UjVsUDR5U0F0T2NoZz09LDE3MTM0Mzc4NzksMTg1LjI0NS4xMTQuMjA5/Arnau_-_Adaldygym_(sefon.pro).mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <section class="page" id="home">
+        <div class="date-top gold-text">06.06.2026</div>
+        <h1 class="initials gold-text">Д & Б</h1>
+    </section>
+
+    <section class="page" id="invitation">
+        <h2 class="names-big gold-text">Дастан & Бибігүл</h2>
+        <div class="invite-text">
+            <p>Құрметті ағайын-туыс, бауырлар, Құда-жегжат, нағашы-жиен, бөлелер, дос-жарандар, ұжымдастар, көршілер!</p>
+            <p>Сіздерді ұлымыз <strong>Дастан</strong> мен келініміз <strong>Бибігүлдің</strong> үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
+        </div>
+
+        <div class="hosts gold-text">
+            <h3>Той иелері: Омар - Райхан</h3>
+        </div>
+
+        <div class="calendar">
+            <h3>Маусым 2026</h3>
+            <p>Пн Вт Ср Чт Пт <b>Сб</b> Вс</p>
+            <p>1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 &nbsp; <span class="highlight-circle">6</span> &nbsp; 7</p>
+        </div>
+
+        <p>Уақыты: <strong>Сағат 19:00-де</strong></p>
+        <p>Мекен-жайымыз: <strong>Шымкент қаласы, "Абубакир" тойханасы</strong></p>
+        <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank" class="map-link">📍 Карта арқылы бару</a>
+
+        <div class="timer-container" id="timer">
+            <div class="timer-box"><div class="timer-num" id="days">00</div><div>күн</div></div>
+            <div class="timer-box"><div class="timer-num" id="hours">00</div><div>сағат</div></div>
+            <div class="timer-box"><div class="timer-num" id="mins">00</div><div>минут</div></div>
+            <div class="timer-box"><div class="timer-num" id="secs">00</div><div>секунд</div></div>
+        </div>
+    </section>
+
+    <section class="page" style="background-image: url('https://i.ibb.co.com/VW8HGBFy/34b51ebe13f29becd46b672449b5000b.jpg');">
+        <div class="form-card">
+            <h2 class="gold-text">Анкета</h2>
+            <input type="text" placeholder="Аты-жөніңіз">
+            <input type="text" placeholder="Жұбайыңыздың аты-жөні">
+            <select>
+                <option value="yes">Иә, келемін</option>
+                <option value="couple">Жұбайыммен келемін</option>
+                <option value="no">Өкінішке орай, келе алмаймын</option>
+            </select>
+            <button onclick="alert('Тіркелгеніңізге рахмет!')">ТІРКЕЛУ / ЖІБЕРУ</button>
+        </div>
+        <p class="footer-text gold-text">Келіңіздер, қуанышымызға ортақ болыңыздар!</p>
+    </section>
+
+    <script>
+        // Музыканы басқару
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '⏸';
+                btn.style.animation = 'none';
+            } else {
+                audio.pause();
+                btn.innerHTML = '🎵';
+                btn.style.animation = 'pulse 2s infinite';
+            }
+        }
+
+        // Таймер логикасы
+        const weddingDate = new Date("June 6, 2026 19:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("mins").innerHTML = minutes;
+            document.getElementById("secs").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "ТОЙ БАСТАЛДЫ!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
