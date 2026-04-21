@@ -139,9 +139,46 @@
             font-style: italic;
             margin-top: 50px;
         }
+
+        /* Музыка батырмасының стилі */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #D4AF37;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
     </style>
 </head>
 <body>
+
+    <div class="music-control">
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+        <audio id="bgMusic" loop>
+            <source src="https://muz.sefon.pro/files/dl/1973538/Nms0UFNXQ295UjVsUDR5U0F0T2NoZz09LDE3MTM0Mzc4NzksMTg1LjI0NS4xMTQuMjA5/Arnau_-_Adaldygym_(sefon.pro).mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
     <section class="page" id="home">
         <div class="date-top gold-text">06.06.2026</div>
@@ -167,7 +204,7 @@
 
         <p>Уақыты: <strong>Сағат 19:00-де</strong></p>
         <p>Мекен-жайымыз: <strong>Шымкент қаласы, "Абубакир" тойханасы</strong></p>
-        <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" class="map-link">📍 Карта арқылы бару</a>
+        <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank" class="map-link">📍 Карта арқылы бару</a>
 
         <div class="timer-container" id="timer">
             <div class="timer-box"><div class="timer-num" id="days">00</div><div>күн</div></div>
@@ -193,6 +230,22 @@
     </section>
 
     <script>
+        // Музыканы басқару
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '⏸';
+                btn.style.animation = 'none';
+            } else {
+                audio.pause();
+                btn.innerHTML = '🎵';
+                btn.style.animation = 'pulse 2s infinite';
+            }
+        }
+
         // Таймер логикасы
         const weddingDate = new Date("June 6, 2026 19:00:00").getTime();
 
@@ -218,3 +271,9 @@
     </script>
 </body>
 </html>
+<div class="music-control">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+    <audio id="bgMusic" loop>
+        <source src="https://www.mboxdrive.com/Arnau_-_Adaldygym.mp3" type="audio/mpeg">
+    </audio>
+</div>
