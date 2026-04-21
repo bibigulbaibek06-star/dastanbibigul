@@ -6,23 +6,21 @@
     <title>Дастан & Бибігүл Үйлену тойы</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; background-color: #fdfaf6; }
-        
+        body, html { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; color: #222; scroll-behavior: smooth; background-color: #fdfaf6; }
         .section { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; background-size: cover; background-position: center; background-attachment: fixed; }
         
-        /* Фонды сәл қанық қылу үшін overlay-ді күшейттік */
-        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); z-index: 1; }
-        .light-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.6); z-index: 1; }
+        /* Жазулар анық көрінуі үшін фонды көлегейлеу */
+        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 1; }
+        .light-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.7); z-index: 1; }
         
         .content { position: relative; z-index: 2; max-width: 600px; padding: 20px; }
 
-        /* Әріптерді қанық қылу және көлеңке қосу */
         h1, .names { 
             font-family: 'Great Vibes', cursive; 
-            color: #b8962d; /* Қанық алтын түс */
+            color: #b8962d; 
             font-size: 4.5rem; 
             margin: 10px 0; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Әріптер анық көрінуі үшін */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
         }
 
         .date-top { 
@@ -30,22 +28,16 @@
             letter-spacing: 5px; 
             font-weight: 600; 
             color: #fff;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
             margin-bottom: 20px; 
         }
 
-        p { font-size: 1.1rem; line-height: 1.6; font-weight: 500; color: #222; }
+        p { font-size: 1.15rem; line-height: 1.6; font-weight: 600; color: #111; }
 
-        h2 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2.2rem; 
-            color: #8c6d12; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #8c6d12; margin-bottom: 15px; }
 
-        .gold-text { color: #8c6d12; font-weight: 800; }
+        .gold-text { color: #8c6d12; font-weight: 800; font-size: 1.2rem; }
 
-        /* Таймер блоктарын қанық қылу */
         #countdown { display: flex; justify-content: center; gap: 10px; margin: 30px 0; }
         .time-box { 
             background: #8c6d12; 
@@ -53,19 +45,20 @@
             padding: 15px; 
             min-width: 70px; 
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .time-box span { display: block; font-size: 1.5rem; font-weight: bold; }
+        .time-box span { display: block; font-size: 1.6rem; font-weight: bold; }
 
-        form { background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 15px; border: 2px solid #8c6d12; }
-        input, select, button { width: 100%; padding: 14px; margin: 10px 0; border: 2px solid #d4af37; border-radius: 8px; font-weight: 600; }
-        button { background-color: #8c6d12; color: white; border: none; font-size: 1.1rem; cursor: pointer; }
+        form { background: white; padding: 30px; border-radius: 15px; border: 2px solid #8c6d12; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        input, select, button { width: 100%; padding: 14px; margin: 10px 0; border: 2px solid #d4af37; border-radius: 8px; font-weight: 600; font-size: 1rem; }
+        button { background-color: #8c6d12; color: white; border: none; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: #5e4a0c; }
 
-        .calendar { background: white; padding: 20px; border: 2px solid #8c6d12; border-radius: 10px; margin: 20px 0; font-weight: bold; }
-        .active-day { background: #8c6d12; color: white; padding: 6px 10px; border-radius: 50%; }
+        .calendar { background: white; padding: 20px; border: 2px solid #8c6d12; border-radius: 10px; margin: 20px 0; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .active-day { background: #8c6d12; color: white; padding: 6px 12px; border-radius: 50%; }
 
         .music-player { position: fixed; bottom: 25px; right: 25px; z-index: 100; }
-        .music-player button { border-radius: 50%; width: 60px; height: 60px; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .music-player button { border-radius: 50%; width: 65px; height: 65px; font-size: 1.8rem; box-shadow: 0 5px 20px rgba(0,0,0,0.4); border: none; background: #d4af37; color: white; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -74,7 +67,7 @@
         <div class="overlay"></div>
         <div class="content">
             <div class="date-top">06.06.2026</div>
-            <div class="names" style="color: #f7e0a3;">Д & Б</div>
+            <div class="names" style="color: #f7e0a3; font-size: 6rem;">Д & Б</div>
         </div>
     </div>
 
@@ -84,8 +77,8 @@
             <div class="names">Дастан & Бибігүл</div>
             <p>Құрметті ағайын-туыс, бауырлар, Құда-жегжат, нағашы-жиен, бөлелер, дос-жарандар, ұжымдастар, көршілер!</p>
             <p>Сіздерді ұлымыз <strong>Дастан</strong> мен келініміз <strong>Бибігүлдің</strong> үйлену тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!</p>
-            <hr style="border: 0; border-top: 2px solid #8c6d12; width: 60%;">
-            <p>Той иелері: <br><span class="gold-text" style="font-size: 1.8rem;">Омар - Райхан</span></p>
+            <hr style="border: 0; border-top: 2px solid #8c6d12; width: 60%; margin: 20px auto;">
+            <p>Той иелері: <br><span class="gold-text" style="font-size: 2rem;">Омар - Райхан</span></p>
         </div>
     </div>
 
@@ -93,16 +86,16 @@
         <div class="light-overlay"></div>
         <div class="content">
             <h2>Той салтанаты</h2>
-            <p style="font-size: 1.4rem; font-weight: bold;">06 маусым, 2026 жыл</p>
+            <p style="font-size: 1.5rem; color: #8c6d12;">06 маусым, 2026 жыл</p>
             <div class="calendar">
                 <strong>МАУСЫМ 2026</strong><br><br>
                 <small>Дс Сс Ср Бс Жм Сн Жк</small><br>
                 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 &nbsp; <span class="active-day">6</span> &nbsp; 7
             </div>
-            <p>Сағат: <span class="gold-text" style="font-size: 1.5rem;">19:00-де</span></p>
+            <p>Сағат: <span class="gold-text" style="font-size: 1.8rem;">19:00-де</span></p>
             <p>Мекен-жайымыз:<br> Шымкент қаласы, <strong>"Абубакир"</strong> тойханасы</p>
             <a href="https://2gis.kz/shymkent/geo/70000001026000951/69.523829,42.342424" target="_blank" style="text-decoration: none;">
-                <button style="width: auto; padding: 12px 30px;">2GIS Картамен ашу</button>
+                <button style="width: auto; padding: 15px 40px;">2GIS Картамен ашу</button>
             </a>
         </div>
     </div>
@@ -110,7 +103,7 @@
     <div class="section" style="background-image: url('https://i.ibb.co/CsvjY59t/813490fab7ef2a36dcf26a9a1a3d2670-1.jpg');">
         <div class="light-overlay"></div>
         <div class="content">
-            <h3>Тойға дейін:</h3>
+            <h2 style="color: #222;">Тойға дейін:</h2>
             <div id="countdown">
                 <div class="time-box"><span id="days">0</span>күн</div>
                 <div class="time-box"><span id="hours">0</span>сағат</div>
@@ -119,7 +112,7 @@
             </div>
 
             <div class="form-container">
-                <h2>Анкета</h2>
+                <h2 style="color: #8c6d12;">Анкета</h2>
                 <form onsubmit="sendToWhatsApp(event)">
                     <input type="text" id="guestName" placeholder="Аты-жөніңіз" required>
                     <input type="text" id="partnerName" placeholder="Жұбайыңыздың аты-жөні">
@@ -142,6 +135,7 @@
     </div>
 
     <script>
+        // Таймер
         const weddingDate = new Date("June 6, 2026 19:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
@@ -152,6 +146,7 @@
             document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
+        // Музыка
         const music = document.getElementById("bgMusic");
         function toggleMusic() {
             if (music.paused) {
@@ -163,12 +158,16 @@
             }
         }
 
+        // WhatsApp жіберу
         function sendToWhatsApp(event) {
             event.preventDefault();
             const name = document.getElementById('guestName').value;
             const partner = document.getElementById('partnerName').value;
             const status = document.getElementById('attendance').value;
-            const phone = "775 152 4821";
+            
+            // СІЗДІҢ НӨМІРІҢІЗ:
+            const phone = "77751524821"; 
+            
             const text = `Сәлем! Тойға жауап:%0AАты: ${name}%0AЖұбайы: ${partner}%0AШешімі: ${status}`;
             window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
         }
